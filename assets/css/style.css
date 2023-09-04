@@ -14,7 +14,6 @@ body{
     margin-top: 2rem;
 }
 .cube{
-    width: calc(100% / 10);
     aspect-ratio: 1;
     border: 2px solid white;
     border-radius: 20px;
@@ -40,4 +39,10 @@ body{
 .bg-azure{
     background-color: paleturquoise;
     color: black;
+}
+.gap-1{
+    gap: 1rem;
+}
+.bomba{
+    background-color: red;
 }
