@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgba(0, 0, 0, 0.972);
+}
+.container{
+    width: 35%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+.cube{
+    width: calc(100% / 10);
+    aspect-ratio: 1;
+    border: 2px solid white;
+    border-radius: 20px;
+    box-shadow: 0 0 10px 0 whitesmoke;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.d-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+}
+.btn{
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-weight: bolders;
+    border: 5px dashed palevioletred;
+    box-shadow: 0 0 10px 0 whitesmoke;
+}
+.bg-azure{
+    background-color: paleturquoise;
+    color: black;
+}
