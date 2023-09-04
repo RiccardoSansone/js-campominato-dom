@@ -1,4 +1,4 @@
-// Consegna
+// Consegna 1
 // L'utente clicca su un bottone che genererà una griglia di gioco quadrata.
 // Ogni cella ha un numero progressivo, da 1 a 100.
 // Ci saranno quindi 10 caselle per ognuna delle 10 righe.
@@ -28,7 +28,7 @@ const genera = document.getElementById('genera');//salvo in una variabile il nod
 let limit;//creo una variabile e gli salvo dentro il limite che dovrá rispettare il ciclo
 const nodo = document.getElementById('node');//salvo in una variabile il nodo della dom dove c'é il mio container flex
 
-let numeriBomba = [5, 7, 9]; //creo un array vuoto per pushare successivamente i 16 numeri randomici
+let numeriBomba = []; //creo un array vuoto per pushare successivamente i 16 numeri randomici
 const facile = document.getElementById('facile');//salvo in una variabile il bottone per la scelta
 const intermedia = document.getElementById('intermedia');//salvo in una variabile il bottone per la scelta
 const difficile = document.getElementById('difficile');//salvo in una variabile il bottone per la scelta
@@ -47,7 +47,22 @@ genera.addEventListener('click', function(){//aggiungo un eventListener al click
 })
 
 function createGrid(domElement, limit){//creo la funzione assegnandogli due parametri, domElement=al nodo della dom in cui si deve appendere, limit=al valore che deve rispettare il ciclo
-     
+    domElement.innerHTML = '' ;
+    numeriBomba = [];
+    while(numeriBomba[15] == null){
+        let numRandom = Math.floor((Math.random() * limit) + 1 );
+        let flag = false
+        for(let i = 0; i < 16; i++){
+            if(numRandom == numeriBomba[i]){
+                flag = true
+            }
+        }
+        if(flag == false){
+            numeriBomba.push(numRandom);
+        }
+    }
+    
+    console.log(numeriBomba)
     for (let i = 0; i < limit; i++) {//creo il ciclo
         const buildElement = document.createElement('div');//creo dinamicamente un elemento della dom e lo salvo in una variabile
         buildElement.innerHTML = (i + 1);//aggiungo all'elemento il valore della posizione che occupa  + 1
@@ -57,13 +72,15 @@ function createGrid(domElement, limit){//creo la funzione assegnandogli due para
     
         buildElement.addEventListener('click', function(){//aggiungo un eventListener al click dell'elemento
             let flag = false 
-            for(let j = 0; j < numeriBomba; j++){
+            for(let j = 0; j < numeriBomba.length; j++){
                 if(numeriBomba[j] == buildElement.innerHTML){
                     flag = true;
                 }
             }
             if(flag == true){
-                buildElement.classList.add('bomba');
+                buildElement.classList.toggle('bomba');
+                if(alert('Sei esploso!')){}
+                else    window.location.reload(); 
             } else {
                 buildElement.classList.toggle('bg-azure');//all'elemento gli aggiungo/tolgo la classe bg-azure
             }
